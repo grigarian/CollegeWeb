@@ -1,0 +1,74 @@
+﻿@model List<Teacher>
+
+<div class="card shadow border-0 mt-4 mb-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-black py-2">Преподаватели</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <div class="row pb-3">
+            <div class="col-6">
+            </div>
+            <div class="col-6 text-end">
+                <a asp-controller="Teacher" asp-action="Upsert" class="btn btn-primary">
+                    <i class="bi bi-plus-circle"></i> Добавить преподавателя
+                </a>
+            </div>
+        </div>
+        <div class="table-responsive">
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        ФИО
+                    </th>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Должность
+                    </th>
+                    <th>
+                        Образование
+                    </th>
+                    <th>
+                        Квалификация
+                    </th>
+                    <th>
+                        Стаж работы
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var obj in Model)
+                {
+                    <tr>
+                        <td>@obj.Name</td>
+                        <td>@obj.Id</td>
+                        <td>@obj.Post</td>
+                        <td>@obj.Education</td>
+                        <td>@obj.Qualification</td>
+                        <td>@obj.WorkExperience</td>
+                        <td>
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Teacher" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
+                                    <i class="bi bi-pencil-square"></i> Изменить
+                                </a>
+                                <a asp-controller="Teacher" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
+                                    <i class="bi bi-trash-fill"></i> Удалить
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+
+

@@ -21,4 +21,9 @@
     <ProjectReference Include="..\College.Models\College.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Views\Student\" />
+    <Folder Include="wwwroot\images\teacher\" />
+  </ItemGroup>
+
 </Project>

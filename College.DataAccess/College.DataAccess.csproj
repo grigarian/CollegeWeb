@@ -16,4 +16,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\College.Models\College.Models.csproj" />
+  </ItemGroup>
+
 </Project>
