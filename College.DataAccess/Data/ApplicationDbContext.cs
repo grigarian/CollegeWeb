@@ -28,6 +28,25 @@ namespace College.DataAccess.Data
 
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Specialization>().HasData(
+                new Specialization
+                {
+                    Id = 1,
+                    Name = "Информационные системы и программирование"
+                },
+                new Specialization
+                {
+                    Id = 2,
+                    Name = "Юриспруденция"
+                },
+                new Specialization
+                {
+                    Id = 3,
+                    Name = "Землеустройство"
+                }
+
+                );
+
             modelBuilder.Entity<Teacher>().HasData(
                 new Teacher 
                 { 

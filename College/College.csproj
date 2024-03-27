@@ -24,6 +24,8 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\Student\" />
     <Folder Include="wwwroot\images\teacher\" />
+    <Folder Include="wwwroot\images\Carousel\" />
+    <Folder Include="wwwroot\images\Ref\" />
   </ItemGroup>
 
 </Project>

@@ -38,7 +38,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item text-secondary" asp-area="Admin" asp-controller="Teacher" asp-action="Index">Action</a></li>
-                                <li><a class="dropdown-item text-secondary" href="#">Another action</a></li>
+                                <li><a class="dropdown-item text-secondary" asp-area="Admin" asp-controller="Specialization" asp-action="Index">Another action</a></li>
                                 <li><a class="dropdown-item text-secondary" href="#">Something else here</a></li>
                             </ul>
                         </li>
@@ -47,6 +47,7 @@
             </div>
         </nav>
     </header>
+    
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

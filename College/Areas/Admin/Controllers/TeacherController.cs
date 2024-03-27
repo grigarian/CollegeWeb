@@ -25,7 +25,10 @@ namespace College.Areas.Admin.Controllers
         }
         public IActionResult Upsert(int? id)
         {
-            TeacherVM teacherVM = new TeacherVM();
+            TeacherVM teacherVM = new()
+            {
+                Teacher = new Teacher()
+            };
             if (id == null || id == 0)
             {
                 //create
@@ -103,8 +106,8 @@ namespace College.Areas.Admin.Controllers
             return View(objTeacherList);
         }
 
-        [HttpDelete]
-        public IActionResult Delete(int? id)
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeletePOST(int? id)
         {
             var teacherToBeDeleted = _unitOfWork.Teacher.Get(u => u.Id == id);
             if (teacherToBeDeleted == null)
@@ -124,7 +127,7 @@ namespace College.Areas.Admin.Controllers
             _unitOfWork.Teacher.Remove(teacherToBeDeleted);
             _unitOfWork.Save();
 
-            return Json(new { success = true, message = "Продукт успешно удален" });
+            return RedirectToAction("Index");
         }
 
 

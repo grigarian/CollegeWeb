@@ -10,6 +10,7 @@ namespace College.DataAccess.Repository.IRepository
     {
         IStudentRepository Student { get; }
         ITeacherRepository Teacher { get; }
+        ISpecializationRepository Specialization { get; }
 
         void Save();
     }

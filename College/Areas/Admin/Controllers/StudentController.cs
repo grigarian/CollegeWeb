@@ -16,8 +16,8 @@ namespace College.Areas.Admin
 
         public IActionResult Index()
         {
-            var objCategoryList = _unitOfWork.Student.GetAll().ToList();
-            return View(objCategoryList);
+            var objStudentList = _unitOfWork.Student.GetAll().ToList();
+            return View(objStudentList);
         }
         public IActionResult Create()
         {
@@ -44,13 +44,13 @@ namespace College.Areas.Admin
             {
                 return NotFound();
             }
-            Student? categoryFromDb = _unitOfWork.Student.Get(u => u.Id == id);
+            Student? studentFromDb = _unitOfWork.Student.Get(u => u.Id == id);
 
-            if (categoryFromDb == null)
+            if (studentFromDb == null)
             {
                 return NotFound();
             }
-            return View(categoryFromDb);
+            return View(studentFromDb);
 
         }
         [HttpPost]
