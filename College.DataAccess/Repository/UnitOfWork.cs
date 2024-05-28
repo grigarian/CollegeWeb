@@ -14,6 +14,7 @@ namespace College.DataAccess.Repository
         public IStudentRepository Student { get; private set; }
         public ITeacherRepository Teacher { get; private set; }
         public ISpecializationRepository Specialization { get; private set; }
+        public IGroupRepository Group { get; private set; }
         
 
         public UnitOfWork(ApplicationDbContext db)
@@ -22,6 +23,7 @@ namespace College.DataAccess.Repository
             Student = new StudentRepository(_db);
             Teacher = new TeacherRepository(_db);
             Specialization = new SpecializationRepository(_db);
+            Group = new GroupRepository(_db);
             
         }
 

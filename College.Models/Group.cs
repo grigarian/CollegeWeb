@@ -20,10 +20,10 @@ namespace College.Models
         [Required]
         [DisplayName("Курс")]
         public int Course { get; set; }
-        public string SpecializationId { get; set; }
+        public int SpecializationId { get; set; }
         [ForeignKey("SpecializationId")]
         [ValidateNever]
-        public string Specialization { get; set; }
+        public Specialization Specialization { get; set; }
 
     }
 }

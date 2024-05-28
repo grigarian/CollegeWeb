@@ -82,6 +82,16 @@ namespace College.DataAccess.Data
 
                 }
             );
+
+            modelBuilder.Entity<Group>().HasData(
+                new Group
+                {
+                    Id = 1,
+                    Name = "ИС",
+                    Course = 3,
+                    SpecializationId = 1
+                }
+                );
         }
     }
 }

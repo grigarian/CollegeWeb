@@ -11,6 +11,7 @@ namespace College.DataAccess.Repository.IRepository
         IStudentRepository Student { get; }
         ITeacherRepository Teacher { get; }
         ISpecializationRepository Specialization { get; }
+        IGroupRepository Group { get; }
 
         void Save();
     }

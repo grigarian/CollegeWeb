@@ -106,30 +106,38 @@ namespace College.Areas.Admin.Controllers
             return View(objTeacherList);
         }
 
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            Teacher? teacherFromDb = _unitOfWork.Teacher.Get(u => u.Id == id);
+
+            if (teacherFromDb == null)
+            {
+                return NotFound();
+            }
+            return View(teacherFromDb);
+
+        }
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int? id)
         {
-            var teacherToBeDeleted = _unitOfWork.Teacher.Get(u => u.Id == id);
-            if (teacherToBeDeleted == null)
+            Teacher? obj = _unitOfWork.Teacher.Get(u => u.Id == id);
+            if (obj == null)
             {
-                return Json(new { success = false, message = "Ошибка при удалении" });
+                return NotFound();
             }
-
-            var oldImagePath =
-                            Path.Combine(_webHostEnvironment.WebRootPath,
-                            teacherToBeDeleted.ImageUrl.TrimStart('\\'));
-
-            if (System.IO.File.Exists(oldImagePath))
-            {
-                System.IO.File.Delete(oldImagePath);
-            }
-
-            _unitOfWork.Teacher.Remove(teacherToBeDeleted);
+            _unitOfWork.Teacher.Remove(obj);
             _unitOfWork.Save();
-
+            TempData["success"] = "Категория успешно удалена";
             return RedirectToAction("Index");
+
+
         }
-
-
     }
+
+
 }
+

@@ -75,21 +75,35 @@ namespace College.Areas.Admin.Controllers
             return View(objSpecList);
         }
 
-        [HttpDelete]
         public IActionResult Delete(int? id)
         {
-            var specToBeDeleted = _unitOfWork.Specialization.Get(u => u.Id == id);
-            if (specToBeDeleted == null)
+            if (id == null || id == 0)
             {
-                return Json(new { success = false, message = "Ошибка при удалении" });
+                return NotFound();
             }
+            Specialization? specFromDb = _unitOfWork.Specialization.Get(u => u.Id == id);
 
-            
+            if (specFromDb == null)
+            {
+                return NotFound();
+            }
+            return View(specFromDb);
 
-            _unitOfWork.Specialization.Remove(specToBeDeleted);
+        }
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeletePOST(int? id)
+        {
+            Specialization? obj = _unitOfWork.Specialization.Get(u => u.Id == id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            _unitOfWork.Specialization.Remove(obj);
             _unitOfWork.Save();
+            TempData["success"] = "Категория успешно удалена";
+            return RedirectToAction("Index");
 
-            return Json(new { success = true, message = "Продукт успешно удален" });
+
         }
     }
 }

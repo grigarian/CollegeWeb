@@ -26,5 +26,6 @@ namespace College.Areas.Customer.Controllers
             teacherVM.Teacher = _unitOfWork.Teacher.Get(u => u.Id == teacherId);
             return View(teacherVM);
         }
+       
     }
 }
